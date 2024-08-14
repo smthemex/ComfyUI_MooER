@@ -1,5 +1,6 @@
-# ComfyUI_ComfyUI_MooER
-MooER is an LLM-based Speech Recognition and Translation Model from Moore Threads
+# ComfyUI_MooER
+MooER is an LLM-based Speech Recognition and Translation Model from Moore Threads.     
+You can use MooER when install ComfyUI_MooER node.    
 
 MooER (摩耳)  From: [MooER (摩耳)](https://github.com/MooreThreads/MooER)
 ---
