@@ -1,0 +1,15 @@
+[project]
+name = "comfyui_mooer"
+description = "MooER is an LLM-based Speech Recognition and Translation Model from Moore Threads.You can use MooER when install ComfyUI_MooER node"
+version = "1.0.0"
+license = "LICENSE"
+dependencies = ["#black", "modelscope", "fire", "#torch>=2.0.0", "#accelerate==0.33.0", "#appdirs", "#loralib", "#bitsandbytes", "#peft", "#transformers==4.40.2", "#sentencepiece", "#py7zr", "#scipy", "#optimum", "#wandb", "#sox", "#hydra-core>=1.3.2", "#deepspeed==0.14.4", "#whisper", "#soundfile", "#datasets"]
+
+[project.urls]
+Repository = "https://github.com/smthemex/ComfyUI_MooER"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = "smthemex"
+DisplayName = "ComfyUI_MooER"
+Icon = ""
