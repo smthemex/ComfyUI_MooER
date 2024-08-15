@@ -78,15 +78,18 @@ If the library is missing, check if the library annotated with # in the requirem
 ```
 4 Example
 ----
+ ![](https://github.com/smthemex/ComfyUI_MooER/blob/main/example/example.png)
 
 5 Function Description of Nodes  
 ---
 --use_torch_musa：使用摩尔线程显卡时开启；
---use_modelscope：国内用户首次使用时开启，需要安装modelscope库；  
+--use_modelscope：国内用户首次使用时开启，下载用，需要安装modelscope库；  
 --encoder_name :only support paraformer now 目前仅支持paraformer;   
 --audio_dir：Batch generated from directory when not 'NONE', not tested temporarily 非空时，从目录批量生成，暂时未测试;   
---adapter_downsample_rate： 未测试;  
---batch_size： 生成批次;   
+--adapter_downsample_rate： 未测试;     
+--mode_choice：choice ASR AST or ALL，选择识别，翻译或者二者；     
+--asr_prompt/ast_prompt：LLM的提示词，LLM prompt；    
+--prompt_key： 选择使用那种prompt，对应asr_prompt 或ast_prompt;      
 
 6 My ComfyUI node list：
 -----
