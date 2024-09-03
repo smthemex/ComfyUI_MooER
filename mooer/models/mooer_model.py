@@ -29,11 +29,17 @@ def init_model(model_config,Qwen2_repo,mooer_repo,encoder_name,mode_choice):
     
     # load adapter
     #ckpt_path = model_config.get("adapter_path", "")、
+    
+    
     if mode_choice=="ASR_AST":
+        if "80K" in mooer_repo:
+            mooer_repo=mooer_repo.replace("80K","5K") #临时用法，80K只支持 语音识别
         ckpt_path = os.path.join(mooer_repo, "asr_ast_mtl/adapter_project.pt")
     elif mode_choice=="ASR":
         ckpt_path = os.path.join(mooer_repo, "asr/adapter_project.pt")
     else:
+        if "80K" in mooer_repo:
+            mooer_repo = mooer_repo.replace("80K", "5K")  # 临时用法，80K只支持 语音识别
         ckpt_path = os.path.join(mooer_repo, "ast/adapter_project.pt")
     if os.path.isdir(ckpt_path):
         logger.info("CKPT: loading DeepSpeed Model from: {}".format(ckpt_path))
@@ -122,10 +128,14 @@ def setup_llm(model_config,Qwen2_repo,mooer_repo,mode_choice):
     print_module_size(model, model_config.llm_name, 0, "====Trainable Params====")
     #if model_config.get("lora_dir", None) and os.path.exists(model_config.get("lora_dir", "")):
     if mode_choice=="ASR_AST":
+        if "80K" in mooer_repo:
+            mooer_repo = mooer_repo.replace("80K", "5K")  # 临时用法，80K只支持 语音识别
         lora_dir=os.path.join(mooer_repo,"asr_ast_mtl/lora_weights")
     elif mode_choice=="ASR":
         lora_dir = os.path.join(mooer_repo, "asr/lora_weights")
     else:
+        if "80K" in mooer_repo:
+            mooer_repo = mooer_repo.replace("80K", "5K")  # 临时用法，80K只支持 语音识别
         lora_dir = os.path.join(mooer_repo, "ast/lora_weights")
     if os.path.exists(lora_dir):
         if model_config.is_inference:
@@ -287,11 +297,12 @@ class MooerModel(nn.Module):
             min_length=kwargs.get("min_length", 1),
             top_p=kwargs.get("top_p", 1.0),
             repetition_penalty=kwargs.get("repetition_penalty", 1.0),
-            length_penalty=kwargs.get("length_penalty", 1.0),
+            length_penalty=kwargs.get("length_penalty", 0.8),
             temperature=kwargs.get("temperature", 1.0),
             attention_mask=attention_mask,
             bos_token_id=self.tokenizer.bos_token_id,
             eos_token_id=self.tokenizer.eos_token_id,
-            pad_token_id=self.tokenizer.pad_token_id
+            pad_token_id=self.tokenizer.pad_token_id,
+            sequence_bias={tuple([self.tokenizer.eos_token_id]): -0.2}
         )
         return model_outputs
