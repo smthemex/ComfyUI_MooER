@@ -4,6 +4,12 @@ You can use MooER when install ComfyUI_MooER node.
 
 MooER (摩耳)  From: [MooER (摩耳)](https://github.com/MooreThreads/MooER)
 ---
+**UPDATE**   
+*2024/09/03*  
+* add MooER-MTL-80K support,only ASR now/增加官方80K模型的内容，目前只支持ASR，先等等吧。    
+* if using 80K fill mtspeech/MooER-MTL-80K in repo_id ,will download auto,/填写mtspeech/MooER-MTL-80K会自动下载，国内请选魔搭，下载好之后，可以用菜单来选择模型；     
+
+
 
 1.Installation
 -----
@@ -27,6 +33,8 @@ If the library is missing, check if the library annotated with # in the requirem
  保持节点默认情况下，点击就从huggingface下载，如果开启use_modelscope，会自动从魔搭下载模型，模型下载的路径是comfyUI/models/diffusers目录下，方便第二次使用菜单； 
  
 "mtspeech/MooER-MTL-5K" huggingface： [MooER-MTL-5K](https://huggingface.co/mtspeech/MooER-MTL-5K) , or modelscope:[MooER-MTL-5K](https://modelscope.cn/models/MooreThreadsSpeech/MooER-MTL-5K)    
+
+"mtspeech/MooER-MTL-80K" huggingface： [MooER-MTL-80K](https://huggingface.co/mtspeech/MooER-MTL-80K), or modelscope:[MooER-MTL-80K](https://modelscope.cn/models/MooreThreadsSpeech/MooER-MTL-80K)  
 
 "Qwen/Qwen2-7B-Instruct" huggingface： [Qwen2-7B-Instruct](https://huggingface.co/Qwen/Qwen2-7B-Instruct) ,or modelscope:[qwen2-7b-instruct](https://modelscope.cn/models/qwen/qwen2-7b-instruct)
 
