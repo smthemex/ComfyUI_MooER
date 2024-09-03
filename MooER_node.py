@@ -275,7 +275,18 @@ class MooER_LoadModel:
             else:
                 print("download from huggingface...")
                 mooer_repo_id=snapshot_download("mtspeech/MooER-MTL-5K", cache_dir=cache_dir,local_dir=local_mo_dir,local_dir_use_symlinks=False )
-                
+        elif mooer_repo_id=="mtspeech/MooER-MTL-80K":
+            if use_modelscope:
+                ignore_files = ["model-00001-of-00004.safetensors", "model-00002-of-00004.safetensors",
+                                "model-00003-of-00004.safetensors", "model-00004-of-00004.safetensors", ]
+                from modelscope.hub.snapshot_download import snapshot_download as snapshot_download_mo
+                print("download from modelscope...")
+                mooer_repo_id=snapshot_download_mo("MooreThreadsSpeech/MooER-MTL-80K", ignore_file_pattern=ignore_files,
+                                     local_dir=local_mo_dir, )
+            else:
+                print("download from huggingface...")
+                mooer_repo_id=snapshot_download("mtspeech/MooER-MTL-80K", cache_dir=cache_dir,local_dir=local_mo_dir,local_dir_use_symlinks=False )
+               
         model, tokenizer = mooer_model.init_model(
             model_config,qwen2_repo_id,mooer_repo_id,encoder_name,mode_choice)
         model.to(device)
