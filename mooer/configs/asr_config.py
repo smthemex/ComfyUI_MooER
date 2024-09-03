@@ -1,5 +1,5 @@
-from dataclasses import dataclass, field
-from typing import Optional, List
+from dataclasses import dataclass
+from typing import Optional
 
 
 @dataclass
@@ -16,7 +16,7 @@ class ModelConfig:
         ###############################
         self.llm_type: str = "decoder_only"
         self.llm_dim: int = 3584
-        self.load_dtype: str = "bfloat16"
+        self.load_dtype: str = "float16"
         self.encoder_name: str = 'paraformer'
         self.encoder_dim: int = 512
         self.adapter: str = "linear"
